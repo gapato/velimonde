@@ -1,0 +1,74 @@
+*          { margin: 0; padding: 0; }
+body, html { height: 100%; }
+
+a { text-decoration: none; }
+
+#map       { height: 100%; width: 100% }
+
+#loading   { position: absolute;
+             top: 50%;
+             left: 50%;
+             height: 2em;
+             width: 10em;
+             margin-left: -5em;
+             margin-top: -5em;
+             z-index: 1000;
+             background-color: black;
+             color: white;
+             text-align: center;
+             line-height: 2em;
+             display: none; }
+
+.station-status             { margin-right: 2em; }
+.station-available-stands   { font-size: 1.3em; font-weight: bold;}
+.station-separator          { }
+.station-total-stands       { }
+
+.reload-control             { margin: 20px;
+                              border: 1px solid rgb(136,136,136); border-radius: 5px;
+                              height: 22px; width: 22px;
+                              font-size: 1.5em; line-height: 1.2em;
+                              text-align: center;
+                              background-color: white; }
+
+.reload-control a           { text-decoration: none; }
+
+.leaflet-control-zoom       { margin: 10px!important; box-shadow: none!important;}
+
+.leaflet-control-cities     { margin: 0 20px; padding: 10px;
+                              border: 1px solid rgb(136,136,136); border-radius: 5px;
+                              background-color: white; }
+
+.leaflet-control-cities-base { }
+
+.leaflet-control-cities-expanded .leaflet-control-cities-toggle,
+.leaflet-control-cities .leaflet-control-cities-list {
+    display: none;
+}
+
+.leaflet-control-cities-expanded .leaflet-control-cities-list {
+    display: block;
+}
+
+.leaflet-control-cities-entry:hover {
+    font-weight: bold;
+}
+
+.velimonde-sample {
+    display: inline-block;
+    width:0.8em;
+    height:0.8em;
+}
+
+.velimonde-empty {
+    background-color: #F55;
+}
+.velimonde-full {
+    background-color: #55F;
+}
+.velimonde-ok {
+    background-color: #0C0;
+}
+.velimonde-closed {
+    background-color: #000;
+}

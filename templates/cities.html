@@ -1,0 +1,8 @@
+{% extends "bare.html" %}
+{% block body %}
+<ul>
+    {% for c in cities %}
+    <li><a href="{{ url_for('city_map', city=c) }}">{{ c }}</a>
+    {% endfor %}
+</ul>
+{% endblock %}

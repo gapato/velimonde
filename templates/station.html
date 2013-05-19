@@ -1,0 +1,14 @@
+{% extends "bare.html" %}
+{% block body %}
+<p>
+    {% if info['bonus'] %}
+    <span title="bonus station"> &#9733;</span>
+    {% endif %}
+    {{ info['name'] }}
+</p>
+<p> {{ info['status'] }} </p>
+<p>
+<span style="font-weight: bold; font-size:1.5em">{{ info['available_bikes'] }}</span>/{{ info['bike_stands'] }} bikes here
+</p>
+updated : {{ info['last_update'] | tomin }} minute(s) ago
+{% endblock %}
