@@ -136,14 +136,15 @@ function map_init() {
         } else {
             map.fitWorld();
         }
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
                 attribution: '<div class="velimonde-sample velimonde-full"></div> ~full '
                 + '<div class="velimonde-sample velimonde-empty"></div> ~empty '
                 + '<div class="velimonde-sample velimonde-ok"></div> OK '
                 + '<div class="velimonde-sample velimonde-closed"></div> closed '
                 + '| <a href="/api">API</a> '
-                + '| Background &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                +' | Realtime data &copy; <a href="https://developer.jcdecaux.com/#/opendata/licence">JCDecaux</a>',
+                + '| Background &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & '
+                + '<a href="http://www.opencyclemap.org/">OpenCycleMap</a> '
+                + '| Realtime data &copy; <a href="https://developer.jcdecaux.com/#/opendata/licence">JCDecaux</a>',
                 opacity: 0.5
                 }).addTo(map);
         map.addControl(new CityControl(contracts));
