@@ -18,6 +18,8 @@ cities = [ u'Amiens', u'Besancon', u'Bruxelles-Capitale', u'Cergy-Pontoise',
                 u'Nantes', u'Paris', u'Rouen', u'Santander', u'Seville', u'Stockholm',
                 u'Toulouse', u'Toyama', u'Valence' ]
 
+cities_lower = map(lambda x:x.lower(), cities)
+
 output_formats = ['html', 'json']
 
 def get_station_info(city, station_id):
@@ -27,6 +29,11 @@ def get_station_info(city, station_id):
         if s['number'] == station_id:
             return s
     return None
+
+# Try to find case insensitive match
+def get_city_upper(city):
+    index = cities_lower.index(city.lower())
+    return cities[index]
 
 @app.route('/')
 def index():
@@ -38,22 +45,30 @@ def api_info():
 
 @app.route('/city/<city>')
 def city_map(city):
-    if city in cities:
-        return render_template('index.html', initial_city=city)
-    else:
+    try:
+        city_upper = get_city_upper(city)
+        return render_template('index.html', initial_city=city_upper)
+    except ValueError:
         flash('This city ({0}) does exist, please choose one below'.format(city))
         return render_template('cities.html', cities=cities)
 
-@app.route('/city/<city>/<int:station_id>')
-@app.route('/city/<city>/<int:station_id>/<format>')
+@app.route('/city/<city>/<station_id>')
 def station_info(city, station_id, format='html'):
-    if city in cities and format in output_formats:
-        info = get_station_info(city, station_id)
-        if info:
-            if format == 'json':
-                return jsonify(info)
-            elif format == 'html':
-                return render_template('station.html', city=city, info=info)
+    try:
+        city_upper = get_city_upper(city)
+        if format in output_formats:
+            if station_id[-5:] == '.json':
+                station_id = station_id[:-5]
+                format = 'json'
+            station_id = int(station_id)
+            info = get_station_info(city_upper, station_id)
+            if info:
+                if format == 'json':
+                    return jsonify(info)
+                elif format == 'html':
+                    return render_template('station.html', city=city_upper, info=info)
+    except ValueError:
+        pass
     abort(404)
 
 @app.template_filter('tomin')
