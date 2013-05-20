@@ -50,10 +50,10 @@ def station_info(city, station_id, format='html'):
     if city in cities and format in output_formats:
         info = get_station_info(city, station_id)
         if info:
-            if format == 'html':
-                return render_template('station.html', city=city, info=info)
-            else:
+            if format == 'json':
                 return jsonify(info)
+            elif format == 'html':
+                return render_template('station.html', city=city, info=info)
     abort(404)
 
 @app.template_filter('tomin')

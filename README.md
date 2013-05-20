@@ -43,7 +43,7 @@ This work is license under the likable [WTFPL](http://www.wtfpl.net/txt/copying/
 
 The real-time data is available at [developer.jcdecaux.com](https://developer.jcdecaux.com/) under ODC-BY, CC-BY 2.0 license.
 If you want to serve the data yourself (you can, so you should), you need to get _your very own_ API key and make the data available under
-``/static/cities.json`` for the list of areas available, and ``/data/<city_name>.json`` for the stations in each area.
+``static/cities.json`` for the list of areas available, and ``data/<city_name>.json`` for the stations in each area.
 Note that ``cities.json`` has a different format than the one served by JCDecaux to speed up lookups.
 
-Map courtesy of [OpenStreetMap](http://osm.org/).
+Map courtesy of [OpenStreetMap](http://osm.org/) contributors and [OpenCycleMap](http://www.opencyclemap.org/).
