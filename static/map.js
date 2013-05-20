@@ -6,7 +6,7 @@ var current_city;
 var cookie_domain = 'velimonde.oknaj.eu';
 var cookie_expire = 3600*24*30;
 
-var contracts;
+var cities;
 
 var ReloadControl = L.Control.extend({
     options: {
@@ -127,8 +127,8 @@ function map_init() {
     if (Cookies.enabled) {
         default_city = Cookies.get('default_city');
     }
-    $.getJSON('/static/contracts.json', function(data) {
-        contracts = eval(data);
+    $.getJSON('/static/cities.json', function(data) {
+        cities = eval(data);
         if (VELIMONDE_INIT_CITY != '') {
             switch_city(VELIMONDE_INIT_CITY);
         } else if (default_city) {
@@ -147,7 +147,7 @@ function map_init() {
                 + '| Realtime data &copy; <a href="https://developer.jcdecaux.com/#/opendata/licence">JCDecaux</a>',
                 opacity: 0.5
                 }).addTo(map);
-        map.addControl(new CityControl(contracts));
+        map.addControl(new CityControl(cities));
     });
 
 
@@ -192,10 +192,10 @@ function switch_city(name) {
     }
     current_city = name;
 
-    position  = contracts[name].position;
+    position  = cities[name].position;
     lat = position.lat;
     lng = position.lng;
-    zoom = contracts[name].zoom;
+    zoom = cities[name].zoom;
 
     fetch_stations(name);
     map.setView([lat, lng], zoom);
