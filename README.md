@@ -19,6 +19,18 @@ You can check [the demo](http://velimonde.oknaj.eu/) out.
 Some say there's a [REST API](http://velimonde.oknaj.eu/api) you can use to access a city or station
 directly.
 
+### Getting your own rolling
+
+* Get the code.
+* Create the ``data`` folder in the Vélimonde root folder.
+* Get your API hey [here](https://developer.jcdecaux.com/) and put it into the ``update_stations`` file
+(if you use git you probably want to use a copy of that file).
+* Setup whatever cron program you use to run ``python update_stations`` periodically. Make sure to ``chdir``
+to the Vélimonde root folder.
+* Setup your webserver, and ensure that the ``static`` and ``data`` folders are served directly. Those are
+separated to make it easier to setup ``Expires`` headers since ``data/*`` is updated much more frequently.
+
+
 ### Things within
 
 * [Cookies.js](https://github.com/ScottHamper/Cookies), by Scott Hamper
