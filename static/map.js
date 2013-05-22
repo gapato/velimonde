@@ -187,18 +187,29 @@ function add_station(i, s) {
 
 function switch_city(name) {
 
-    if (Cookies.enabled) {
-        Cookies.set('default_city',  name);
+    if (name == 'world') {
+        map.fitWorld();
+        return;
     }
+
     current_city = name;
 
-    position  = cities[name].position;
-    lat = position.lat;
-    lng = position.lng;
-    zoom = cities[name].zoom;
+    if (cities[name]) {
+        position  = cities[name].position;
+        lat = position.lat;
+        lng = position.lng;
+        zoom = cities[name].zoom;
 
-    fetch_stations(name);
-    map.setView([lat, lng], zoom);
+        fetch_stations(name);
+
+        if (Cookies.enabled) {
+            Cookies.set('default_city',  name);
+        }
+        map.setView([lat, lng], zoom);
+    } else {
+        Cookies.set('default_city', 'world');
+        map.fitWorld();
+    }
 };
 
 function load_stations(data) {
