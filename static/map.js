@@ -135,7 +135,7 @@ function map_init() {
         } else if (default_city) {
                 switch_city(default_city);
         } else {
-            map.fitWorld();
+            reset_to_world();
         }
         $.get('/debug/tilelayer_init');
         L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
@@ -187,10 +187,15 @@ function add_station(i, s) {
     mark.addTo(marks_layer_group);
 }
 
+function reset_to_world() {
+    map.fitWorld();
+    $('#splash').show();
+}
+
 function switch_city(name) {
 
     if (name == 'world') {
-        map.fitWorld();
+        reset_to_world();
         return;
     }
 
@@ -207,10 +212,11 @@ function switch_city(name) {
         if (Cookies.enabled) {
             Cookies.set('default_city',  name);
         }
+        $('#splash').hide();
         map.setView([lat, lng], zoom);
     } else {
         Cookies.set('default_city', 'world');
-        map.fitWorld();
+        reset_to_world();
     }
 };
 

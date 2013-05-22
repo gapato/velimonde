@@ -27,6 +27,20 @@ a { text-decoration: none; }
               height: 54px;
               z-index: 1001; }
 
+#splash     { position: absolute;
+              padding: 1em;
+              top: 25%;
+              left: 25%;
+              width: 50%;
+              max-height: 50%;
+              overflow: auto;
+              z-index: 1001;
+              background-color: white;
+              border-radius: 5px;
+              display: none; }
+
+#splash p    { margin-top: 1em; }
+
 .station-status             { margin-right: 2em; }
 .station-available-stands   { font-size: 1.3em; font-weight: bold;}
 .station-separator          { }
