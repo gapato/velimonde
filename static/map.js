@@ -124,6 +124,7 @@ var CityControl = L.Control.extend({
 
 function map_init() {
     map = L.map('map');
+    $.get('/debug/map_init_created');
     if (Cookies.enabled) {
         default_city = Cookies.get('default_city');
     }
@@ -136,6 +137,7 @@ function map_init() {
         } else {
             map.fitWorld();
         }
+        $.get('/debug/tilelayer_init');
         L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
                 attribution: '<div class="velimonde-sample velimonde-full"></div> ~full '
                 + '<div class="velimonde-sample velimonde-empty"></div> ~empty '
@@ -148,9 +150,8 @@ function map_init() {
                 opacity: 0.5
                 }).addTo(map);
         map.addControl(new CityControl(cities));
+        $.get('/debug/map_init_end');
     });
-
-
 }
 
 function add_station(i, s) {
