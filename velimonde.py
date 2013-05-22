@@ -71,6 +71,10 @@ def station_info(city, station_id, format='html'):
         pass
     abort(404)
 
+@app.route('/cmcmp')
+def cmcmp():
+    return render_template('cmcmp.html')
+
 @app.template_filter('tomin')
 def epoch_to_minutes(s):
 # jdecaux data uses msecs for epoch

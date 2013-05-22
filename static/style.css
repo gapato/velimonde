@@ -19,6 +19,14 @@ a { text-decoration: none; }
              line-height: 2em;
              display: none; }
 
+#tip-broken { position: absolute;
+              padding: 1em;
+              top: 0;
+              right: 0;
+              width: 50px;
+              height: 54px;
+              z-index: 1001; }
+
 .station-status             { margin-right: 2em; }
 .station-available-stands   { font-size: 1.3em; font-weight: bold;}
 .station-separator          { }

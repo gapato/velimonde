@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-<div id="map"></div>
+<div id="map">
+    <div id="tip-broken">
+        <a href="{{ url_for('cmcmp') }}">
+            <img alt="cass&eacute; ? - broken?" src="{{ url_for('static', filename='help.png') }}">
+        </a>
+    </div>
+</div>
 <div id="loading">Loading</div>
 {% endblock %}
 

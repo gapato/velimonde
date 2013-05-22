@@ -1,0 +1,16 @@
+{% extends "bare.html" %}
+{% block title %}Vélimonde - Bug ?{% endblock %}
+{% block body %}
+    <p>
+    Chez toi ça marche pas ? Essaie de vider le cache (en général Maj-F5, depuis la page <a href="{{ url_for('index') }}">principale</a>).
+    Sinon prends 2 minutes pour détailler ta config (OS, navigateur, etc.) dans un <a href="https://github.com/gapato/velimonde/issues">rapport de bug</a> sur Github
+    ou dans les <a href="http://linuxfr.org/users/gapato/journaux/velimonde">commentaires</a> du journal Linuxfr ! Merci !
+    <p>
+    <p>
+    Looks like something is broken ? Try flushing your cache (usually Shift-F5, on the <a href="{{ url_for('index')}}">main</a> page).
+    If it doesn't help, please file a <a href="https://github.com/gapato/velimonde/issues">bug report</a> on Github including OS and browser! Thanks!
+    <p>
+    <p>
+    Contact: velimonde@oknaj.eu
+    </p>
+{% endblock %}
