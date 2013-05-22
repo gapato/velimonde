@@ -146,7 +146,8 @@ function map_init() {
                 + '| <a href="/api">API</a> '
                 + '| Background &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & '
                 + '<a href="http://www.opencyclemap.org/">OpenCycleMap</a> '
-                + '| Realtime data &copy; <a href="https://developer.jcdecaux.com/#/opendata/licence">JCDecaux</a>',
+                + '| Realtime data &copy; <a href="https://developer.jcdecaux.com/#/opendata/licence">JCDecaux</a>'
+                + '| Source on <a href="https://github.com/gapato/velimonde">Github</a>',
                 opacity: 0.5
                 }).addTo(map);
         map.addControl(new CityControl(cities));
