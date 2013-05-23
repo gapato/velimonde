@@ -3,23 +3,23 @@
 <head>
     <title>Vélimonde</title>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
 
     <!-- CSS -->
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='leaflet.css') }}" />
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.css') }}" />
     <!--[if lte IE 8]>
-       <link rel="stylesheet" href="{{ url_for('static', filename='leaflet.ie.css') }}" />
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.ie.css') }}" />
     <![endif]-->
 
     <!-- JS -->
     <script>L_PREFER_CANVAS = true;</script>
     <script>var VELIMONDE_INIT_CITY = '{{ initial_city }}';</script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery.min.js') }}">\x3C/script>')</script>
-    <script src="{{ url_for('static', filename='leaflet.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='cookies.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='map.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/jquery.min.js') }}">\x3C/script>')</script>
+    <script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/cookies.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}"></script>
 
 </head>
 

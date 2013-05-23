@@ -1,26 +1,11 @@
 #!/usr/bin/env python
 
-import sys
-import urllib2
-import json
-import velimonde
+import velimonde_providers
 
-API_KEY           = "<your API key here>"
-C_LIST_URL        = "https://api.jcdecaux.com/vls/v1/contracts?apiKey="+API_KEY
-C_INFO_URL_FORMAT = "https://api.jcdecaux.com/vls/v1/stations?contract={0}&apiKey="+API_KEY
+# To skip a module, simply remove the corresponding key in the options dict
+# To keep it without passing any options, set the correponding value to {}
+options = {
+        'tfl_london' : { 'url' : '<TfL data feed url here>' },
+        'jcdecaux' : { 'api_key' : '<your JCDecaux API key here>' } }
 
-cities            = velimonde.cities
-
-# Check that we have no new city available
-r = urllib2.urlopen(C_LIST_URL)
-upstream_cities = json.load(r)
-for c in upstream_cities:
-    if c["name"] not in cities:
-        print "A new city (%s) is available you should update velimonde.cities and static/cities.json" % c["name"]
-
-# Update cities .json files
-for c in cities:
-    url = C_INFO_URL_FORMAT.format(c)
-    r = urllib2.urlopen(url)
-    with open('data/{0}.json'.format(c), 'w') as f:
-        f.write(r.read())
+velimonde_providers.update_all(options)

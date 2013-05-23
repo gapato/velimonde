@@ -5,19 +5,17 @@
 {{ city }}
 </h3>
 <p>
-    {% if info['bonus'] %}
-    <span title="bonus station"> &#9733;</span>
-    {% endif %}
     {{ info['name'] }}
 </p>
-<p> {{ info['status'] }} </p>
-<p>
+{% if not info['open'] %}
+<p>This station is CLOSED!</p>
+{% endif %}
 <span style="font-weight: bold; font-size:1.5em">{{ info['available_bikes'] }}</span>/{{ info['bike_stands'] }} bikes here
 </p>
 <p>
 updated : {{ info['last_update'] | tomin }} minute(s) ago
 </p>
 <p>
-Get it as <a href="{{ url_for('station_info', city=city, station_id=info['number'])+'.json' }}">JSON</a>
+Get it as <a href="{{ url_for('station_info', city=city, station_id=info['id'])+'.json' }}">JSON</a>
 </p>
 {% endblock %}

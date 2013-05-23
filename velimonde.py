@@ -2,6 +2,12 @@ from flask import Flask, render_template, abort, jsonify, flash
 from flask.helpers import send_from_directory
 import json
 import time
+try:
+    from collections import OrderedDict
+except:
+    # python 2.6 and below, install via pip or easy_install
+    from ordereddict import OrderedDict
+import velimonde_providers
 
 # configuration
 SECRET_KEY = 'dev key'
@@ -12,28 +18,29 @@ if __name__ == '__main__':
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-cities = [ u'Amiens', u'Besancon', u'Bruxelles-Capitale', u'Cergy-Pontoise',
-                u'Creteil', u'Goteborg', u'Ljubljana', u'Luxembourg',
-                u'Lyon', u'Marseille', u'Mulhouse', u'Namur', u'Nancy',
-                u'Nantes', u'Paris', u'Rouen', u'Santander', u'Seville', u'Stockholm',
-                u'Toulouse', u'Toyama', u'Valence' ]
+cities = velimonde_providers.cities
 
-cities_lower = map(lambda x:x.lower(), cities)
+cities_upper = cities.keys()
+cities_lower = map(lambda x:x.lower(), cities_upper)
+
+with open('static/cities.json', 'w') as f:
+    ordered_cities = OrderedDict(sorted(cities.items(), key=lambda t: t[0]))
+    f.write(json.dumps(ordered_cities))
 
 output_formats = ['html', 'json']
 
 def get_station_info(city, station_id):
-    with open('data/{0}.json'.format(city)) as f:
+    with open(u'data/{0}.json'.format(city)) as f:
         stations = json.load(f)
     for s in stations:
-        if s['number'] == station_id:
+        if s['id'] == station_id:
             return s
     return None
 
 # Try to find case insensitive match
 def get_city_upper(city):
     index = cities_lower.index(city.lower())
-    return cities[index]
+    return cities_upper[index]
 
 @app.route('/')
 def index():
@@ -50,7 +57,7 @@ def city_map(city):
         return render_template('index.html', initial_city=city_upper)
     except ValueError:
         flash('This city ({0}) does exist, please choose one below'.format(city))
-        return render_template('cities.html', cities=cities)
+        return render_template('cities.html', cities=cities_upper)
 
 @app.route('/city/<city>/<station_id>')
 def station_info(city, station_id, format='html'):

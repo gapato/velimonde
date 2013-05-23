@@ -101,7 +101,9 @@ var CityControl = L.Control.extend({
 
     _addItem: function (name, obj) {
         city_div = document.createElement('div');
-        city_div.innerHTML = name;
+        c = obj['country'];
+        city_div.innerHTML =  name + '<span class="velimonde-country">'
+            +'<img src="/static/img/flags/'+c+'.png" alt="'+c+'" title="'+c+'"></span>';
         city_div.className = 'leaflet-control-cities-entry';
         city_div.cityId = name;
         L.DomEvent.on(city_div, 'click', this._onItemClick);
@@ -156,10 +158,10 @@ function map_init() {
 }
 
 function add_station(i, s) {
-    if (s.status == 'OPEN') {
+    if (s.open) {
         if (s.available_bikes <= 3) {
             color = '#F55';
-        } else if (s.available_bike_stands <= 3) {
+        } else if ((s.bike_stands - s.available_bikes) <= 3) {
             color = '#55F';
         } else {
             color = '#0C0';
@@ -169,12 +171,11 @@ function add_station(i, s) {
     }
     mark = new L.Circle([s.position.lat, s.position.lng], 10, {color: color, opacity: 0.7, fillOpacity: 1, weight: 10});
     popup_text  = '<div class="station-info">';
-    popup_text += '<div class="station-name">'
-    if (s.bonus) {
-        popup_text += ' &#9733; ';
+    popup_text += '<div class="station-name">';
+    popup_text += '<a href="/city/'+current_city+'/'+s.id+'">'+s.name+'</a></div>';
+    if (!s.open) {
+        popup_text += '<span class="station-status">This station is CLOSED!</span>';
     }
-    popup_text += '<a href="/city/'+current_city+'/'+s.number+'">'+s.name+'</a></div>';
-    popup_text += '<span class="station-status">'+s.status+'</span>';
     popup_text += '<span class="station-available-stands">'+s.available_bikes+'</span>';
     popup_text += '<span class="station-separator">/</span>';
     popup_text += '<span class="station-total-stands">'+s.bike_stands+'</span> bikes here';
@@ -193,6 +194,7 @@ function reset_to_world() {
 }
 
 function switch_city(name) {
+
 
     if (name == 'world') {
         reset_to_world();
@@ -237,9 +239,9 @@ function load_stations(data) {
 
 function fetch_stations(name) {
     $('#loading').show();
-    $.ajax({url: '/data/'+name+'.json',
-            success: load_stations
-    }).done(load_stations).always( function(){
+    $.ajax({url: '/data/'+name+'.json'}).done(function(data) {
+        load_stations(data);
+    }).always( function(){
         $('#loading').hide();
     });
 }

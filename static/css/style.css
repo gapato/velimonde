@@ -94,3 +94,8 @@ a { text-decoration: none; }
 .velimonde-closed {
     background-color: #000;
 }
+
+span.velimonde-country {
+    float: right;
+    margin-left:2em;
+}
