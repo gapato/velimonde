@@ -23,13 +23,16 @@ info = {
 def update(options={}):
     url = options['url']
     if url:
-        r = urllib2.urlopen(url)
+        try:
+            r = urllib2.urlopen(url)
 
-        root = ET.fromstring(r.read())
-        out_json = _format_to_json(root)
+            root = ET.fromstring(r.read())
+            out_json = _format_to_json(root)
 
-        with open('data/London.json', 'w') as f:
-            json.dump(out_json, f)
+            with open('data/London.json', 'w') as f:
+                json.dump(out_json, f)
+        except:
+            sys.stderr.write(u'Failed to retrieve data for {0} ({1} plugin)'.format(k, __name__))
     else:
         sys.stderr.write('TfL feed url not defined in options dict')
 

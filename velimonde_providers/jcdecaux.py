@@ -97,10 +97,10 @@ def update(options={}):
                 r = urllib2.urlopen(url)
                 in_json  = json.load(r)
                 out_json = _reformat_json(in_json)
-                with open(u'data/{0}.json'.format(k), 'w') as f:
+                with open(u'data/{0}.json'.format(k).encode('utf-8'), 'w') as f:
                     json.dump(out_json, f, separators=(',',':'));
             except:
-                sys.stderr.write('Failed to retrieve data for {0} ({1} plugin)'.format(k, __name__))
+                sys.stderr.write(u'Failed to retrieve data for {0} ({1} plugin)'.format(k, __name__).encode('utf-8'))
     else:
         sys.stderr.write('JCDecaux API key not defined in options dict')
 
