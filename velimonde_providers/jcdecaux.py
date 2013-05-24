@@ -14,7 +14,7 @@ import sys
 # cities = { 'local name' : {
 #    'position' : {'lat' : float, 'lng' : float},
 #    'zoom'     : (int) zoom level,
-#    'country'  : (3 letters ISO 3166)' }}
+#    'country'  : (2 letters ISO 3166)' }}
 # the position and zoom level should be tuned so the city can fit on a regular screen
 # the local name is the one displayed beside the map
 # see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
