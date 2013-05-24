@@ -204,10 +204,6 @@ function switch_city(name) {
     current_city = name;
 
     if (cities[name]) {
-        position  = cities[name].position;
-        lat = position.lat;
-        lng = position.lng;
-        zoom = cities[name].zoom;
 
         fetch_stations(name);
 
@@ -215,7 +211,6 @@ function switch_city(name) {
             Cookies.set('default_city',  name);
         }
         $('#splash').hide();
-        map.setView([lat, lng], zoom);
     } else {
         Cookies.set('default_city', 'world');
         reset_to_world();
@@ -228,11 +223,12 @@ function load_stations(data) {
         if (marks_layer_group) {
             marks_layer_group.clearLayers();
         } else {
-            marks_layer_group = new L.LayerGroup();
+            marks_layer_group = new L.FeatureGroup();
             marks_layer_group.addTo(map);
         }
         var stations = eval(data);
         $.each(stations, add_station);
+        map.fitBounds(marks_layer_group.getBounds());
     }
 }
 

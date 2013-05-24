@@ -12,35 +12,32 @@ import json
 import sys
 
 # cities = { 'local name' : {
-#    'position' : {'lat' : float, 'lng' : float},
-#    'zoom'     : (int) zoom level,
 #    'country'  : (2 letters ISO 3166)' }}
-# the position and zoom level should be tuned so the city can fit on a regular screen
 # the local name is the one displayed beside the map
 # see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 cities = {
-    u'Amiens'             : { 'country': 'FR', 'position' : {'lat':49.894607,'lng':2.293525},'zoom':14  } ,
-    u'Besancon'           : { 'country': 'FR', 'position' : {'lat':47.239006,'lng':6.023297},'zoom':14  } ,
-    u'Bruxelles-Capitale' : { 'country': 'FR', 'position' : {'lat':50.844646,'lng':4.346638},'zoom':12  } ,
-    u'Cergy-Pontoise'     : { 'country': 'FR', 'position' : {'lat':49.034661,'lng':2.058477},'zoom':13  } ,
-    u'Créteil'            : { 'country': 'FR', 'position' : {'lat':48.780811,'lng':2.461560},'zoom':15  } ,
-    u'Göteborg'           : { 'country': 'SE', 'position' : {'lat':57.703207,'lng':11.965785},'zoom':14 } ,
-    u'Ljubljana'          : { 'country': 'SI', 'position' : {'lat':46.063643,'lng':14.505987},'zoom':13 } ,
-    u'Luxembourg'         : { 'country': 'LU', 'position' : {'lat':49.607873,'lng':6.130114},'zoom':13  } ,
-    u'Lyon'               : { 'country': 'FR', 'position' : {'lat':45.759679,'lng':4.836130},'zoom':13  } ,
-    u'Marseille'          : { 'country': 'FR', 'position' : {'lat':43.285016,'lng':5.374460},'zoom':13  } ,
-    u'Mulhouse'           : { 'country': 'FR', 'position' : {'lat':47.749453,'lng':7.335134},'zoom':14  } ,
-    u'Namur'              : { 'country': 'BE', 'position' : {'lat':50.465618,'lng':4.862695},'zoom':14  } ,
-    u'Nancy'              : { 'country': 'FR', 'position' : {'lat':48.688552,'lng':6.178222},'zoom':14  } ,
-    u'Nantes'             : { 'country': 'FR', 'position' : {'lat':47.218516,'lng':-1.554515},'zoom':13 } ,
-    u'Paris'              : { 'country': 'FR', 'position' : {'lat':48.856866,'lng':2.352190},'zoom':12  } ,
-    u'Rouen'              : { 'country': 'FR', 'position' : {'lat':49.435455,'lng':1.094127},'zoom':14  } ,
-    u'Santander'          : { 'country': 'ES', 'position' : {'lat':43.457442,'lng':-3.834411},'zoom':13 } ,
-    u'Sevilla'            : { 'country': 'ES', 'position' : {'lat':37.378683,'lng':-5.967722},'zoom':13 } ,
-    u'Stockholm'          : { 'country': 'SE', 'position' : {'lat':59.330761,'lng':18.061310},'zoom':13 } ,
-    u'Toulouse'           : { 'country': 'FR', 'position' : {'lat':43.604462,'lng':1.444247},'zoom':13  } ,
-    u'富山市'             : { 'country': 'JP', 'position' : {'lat':36.694954,'lng':137.209582},'zoom':14} ,
-    u'Valencia'           : { 'country': 'ES', 'position' : {'lat':39.478539,'lng':-0.375338},'zoom':13 }
+    u'Amiens'             : { 'country': 'FR' } ,
+    u'Besancon'           : { 'country': 'FR' } ,
+    u'Bruxelles-Capitale' : { 'country': 'FR' } ,
+    u'Cergy-Pontoise'     : { 'country': 'FR' } ,
+    u'Créteil'            : { 'country': 'FR' } ,
+    u'Göteborg'           : { 'country': 'SE' } ,
+    u'Ljubljana'          : { 'country': 'SI' } ,
+    u'Luxembourg'         : { 'country': 'LU' } ,
+    u'Lyon'               : { 'country': 'FR' } ,
+    u'Marseille'          : { 'country': 'FR' } ,
+    u'Mulhouse'           : { 'country': 'FR' } ,
+    u'Namur'              : { 'country': 'BE' } ,
+    u'Nancy'              : { 'country': 'FR' } ,
+    u'Nantes'             : { 'country': 'FR' } ,
+    u'Paris'              : { 'country': 'FR' } ,
+    u'Rouen'              : { 'country': 'FR' } ,
+    u'Santander'          : { 'country': 'ES' } ,
+    u'Sevilla'            : { 'country': 'ES' } ,
+    u'Stockholm'          : { 'country': 'SE' } ,
+    u'Toulouse'           : { 'country': 'FR' } ,
+    u'富山市'             : { 'country': 'JP' } ,
+    u'Valencia'           : { 'country': 'ES' }
 }
 
 # Unused for now

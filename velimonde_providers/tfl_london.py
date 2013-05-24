@@ -10,7 +10,7 @@ import urllib2
 import xml.etree.ElementTree as ET
 import json
 
-cities = {'London' : {'country':  'GB', 'position': {'lat':51.507778, 'lng':-0.128056}, 'zoom': 12}}
+cities = {'London' : {'country':  'GB' }}
 
 info = {
     'provider' : 'Transport for London',                                                     # name of the data provider
