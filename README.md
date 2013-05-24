@@ -3,13 +3,12 @@
 #### Overview
 
 Rather stupid webapp showing location and availability of automated bike rental stations.
-This works for cities which have some kind of partnership with JCDecaux for deployment.
 
 #### TODO
 
 * Be very kind and try to make it behave OK on hand-held thingies
 * Option to disable background to save bandwidth
-* Find a better background (no need for freaking _buildings_ to be on there) and stop leeching OSM.org
+* Move away from jQuery
 * Etc.
 
 #### Demo
@@ -45,6 +44,8 @@ This work is license under the likable [WTFPL](http://www.wtfpl.net/txt/copying/
 
 #### The data within, many thanks to them too!
 
-The real-time data is available at [developer.jcdecaux.com](https://developer.jcdecaux.com/) under ODC-BY, CC-BY 2.0 license.
+Real time data:
+* [JCDecaux](https://developer.jcdecaux.com/), under ODC-BY, CC-BY 2.0 license.
+* [Transport for London](http://www.tfl.gov.uk/businessandpartners/syndication/default.aspx), licensing does not allow distribution.
 
 Map courtesy of [OpenStreetMap](http://osm.org/) contributors and [OpenCycleMap](http://www.opencyclemap.org/).
