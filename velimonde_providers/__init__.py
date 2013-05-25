@@ -1,7 +1,8 @@
 import tfl_london
 import jcdecaux
+import keolis_rennes
 
-modules = [tfl_london, jcdecaux]
+modules = [tfl_london, jcdecaux, keolis_rennes]
 
 cities = {}
 for m in modules:

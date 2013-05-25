@@ -47,5 +47,6 @@ This work is license under the likable [WTFPL](http://www.wtfpl.net/txt/copying/
 Real time data:
 * [JCDecaux](https://developer.jcdecaux.com/), under ODC-BY, CC-BY 2.0 license.
 * [Transport for London](http://www.tfl.gov.uk/businessandpartners/syndication/default.aspx), licensing does not allow distribution.
+* [Keolis Rennes](http://data.keolis-rennes.com/)
 
 Map courtesy of [OpenStreetMap](http://osm.org/) contributors and [OpenCycleMap](http://www.opencyclemap.org/).
