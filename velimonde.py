@@ -14,20 +14,22 @@ SECRET_KEY = 'dev key'
 if __name__ == '__main__':
     DEBUG = True
 
-# create our little application :)
-app = Flask(__name__)
-app.config.from_object(__name__)
-
+# initialization
 cities = velimonde_providers.cities
 
 cities_upper = cities.keys()
 cities_lower = map(lambda x:x.lower(), cities_upper)
 
+output_formats = ['html', 'json']
+
 with open('static/cities.json', 'w') as f:
     ordered_cities = OrderedDict(sorted(cities.items(), key=lambda t: t[0]))
     f.write(json.dumps(ordered_cities))
 
-output_formats = ['html', 'json']
+# create our little application :)
+app = Flask(__name__)
+app.config.from_object(__name__)
+
 
 def get_station_info(city, station_id):
     with open(u'data/{0}.json'.format(city)) as f:
