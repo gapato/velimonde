@@ -41,7 +41,7 @@ a { text-decoration: none; }
 
 #splash p    { margin-top: 1em; }
 
-.station-status             { margin-right: 2em; }
+p.station-status            { margin: 0.5em 0; color: red; font-weight: bold; }
 .station-available-stands   { font-size: 1.3em; font-weight: bold;}
 .station-separator          { }
 .station-total-stands       { }

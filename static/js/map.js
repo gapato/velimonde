@@ -174,7 +174,7 @@ function add_station(i, s) {
     popup_text += '<div class="station-name">';
     popup_text += '<a href="/city/'+current_city+'/'+s.id+'">'+s.name+'</a></div>';
     if (!s.open) {
-        popup_text += '<span class="station-status">This station is CLOSED!</span>';
+        popup_text += '<p class="station-status">This station is CLOSED!</p>';
     }
     popup_text += '<span class="station-available-stands">'+s.available_bikes+'</span>';
     popup_text += '<span class="station-separator">/</span>';
