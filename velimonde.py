@@ -15,7 +15,7 @@ if __name__ == '__main__':
     DEBUG = True
 
 # initialization
-cities = velimonde_providers.cities
+cities = velimonde_providers.get_cities()
 
 cities_upper = cities.keys()
 cities_lower = map(lambda x:x.lower(), cities_upper)
