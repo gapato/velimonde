@@ -9,6 +9,7 @@
 import urllib2
 import xml.etree.ElementTree as ET
 import json
+import sys
 
 cities = {'London' : {'country':  'GB' }}
 
