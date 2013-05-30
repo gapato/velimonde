@@ -6,7 +6,8 @@ import velimonde_providers
 # To keep it without passing any options, set the correponding value to {}
 options = {
         'tfl_london' : { 'url' : '<TfL data feed url here>' },
-        'keolis_rennes' : { 'api_key' : '' },
+        'keolis_rennes' : { 'api_key' : '<your Keolis Rennes API key here>' },
+        'lacub_bordeaux' : { 'api_key' : '<your LACUB API key here>' },
         'jcdecaux' : { 'api_key' : '<your JCDecaux API key here>' } }
 
 velimonde_providers.update_all(options)

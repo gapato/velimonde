@@ -1,8 +1,9 @@
 import tfl_london
 import jcdecaux
 import keolis_rennes
+import lacub_bordeaux
 
-plugins = [tfl_london, jcdecaux, keolis_rennes]
+plugins = [tfl_london, jcdecaux, keolis_rennes, lacub_bordeaux]
 
 def get_cities(plugin_name_list=[]):
     """ Return a dict containing the cities of plugins matching the input list,
