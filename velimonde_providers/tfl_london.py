@@ -31,9 +31,9 @@ def update(options={}):
             out_json = _format_to_json(root)
 
             with open('data/London.json', 'w') as f:
-                json.dump(out_json, f)
+                json.dump(out_json, f, separators=(',',':'))
         except:
-            sys.stderr.write(u'Failed to retrieve data for {0} ({1} plugin)'.format(k, __name__))
+            sys.stderr.write(u'Failed to retrieve data for London ({0} plugin)'.format(__name__))
     else:
         sys.stderr.write('TfL feed url not defined in options dict')
 
@@ -57,9 +57,9 @@ def _format_to_json(root):
             if t.tag == 'name':
                 station['name'] = t.text
             if t.tag == 'lat':
-                position['lat'] = float(t.text)
+                position['lat'] = round(float(t.text), 6)
             if t.tag == 'long':
-                position['lng'] = float(t.text)
+                position['lng'] = round(float(t.text), 6)
         station['position'] = position
         stations.append(station)
-    return json.dumps(stations, separators=(',',':'))
+    return stations

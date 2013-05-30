@@ -80,8 +80,8 @@ def _reformat_json(data):
             'id'              : int(s['number']),
             'name'            : s['name'],
             'position'        : {
-                'lat': float(s['latitude']),
-                'lng': float(s['longitude'])
+                'lat': round(float(s['latitude']), 6),
+                'lng': round(float(s['longitude']), 6)
                 },
             'open'            : s['state'] == '1',
             'bike_stands'     : stands+bikes,

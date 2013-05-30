@@ -107,7 +107,7 @@ def _reformat_json(data):
         station = {
             'id'              : s['number'],
             'name'            : s['name'],
-            'position'        : s['position'],
+            'position'        : { 'lat' : round(s['position']['lat'], 6), 'lng' : round(s['position']['lng'], 6) },
             'open'            : s['status'] == 'OPEN',
             'bike_stands'     : s['bike_stands'],
             'available_bikes' : s['available_bikes'],
