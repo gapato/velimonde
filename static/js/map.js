@@ -8,26 +8,9 @@ var cookie_expire = 3600*24*30;
 
 var cities;
 
-var ReloadControl = L.Control.extend({
-    options: {
-        position: 'topleft',
-        title: 'reload'
-    },
-
-    onAdd: function (map) {
-        var container = L.DomUtil.create('div', 'reload-control');
-        link = L.DomUtil.create('a', 'reload-control-link', container);
-        link.setAttribute('href', '#');
-        link.innerHTML='&#10227;';
-        container.onclick=function(){fetch_stations(current_city);};
-        this._container = container;
-        return container;
-    }
-});
-
 var CityControl = L.Control.extend({
     options: {
-        position: 'topleft',
+        position: 'topcenter',
         title: 'city',
         cities: {"Paris":{"position":{"lat":48.856866,"lng":2.352190},"zoom":12}}
     },
@@ -47,6 +30,12 @@ var CityControl = L.Control.extend({
 
     // shameless copy from Leaflet/control/Control.Layers
     _initLayout: function() {
+
+        var $controlContainer = $(map._controlContainer);
+        if ($controlContainer.children('.leaflet-top.leaflet-center').length == 0) {
+            $controlContainer.append('<div class="leaflet-top leaflet-center"></div>');
+            map._controlCorners.topcenter = $controlContainer.children('.leaflet-top.leaflet-center').first()[0];
+        }
 
         var className = 'leaflet-control-cities',
             container = this._container = L.DomUtil.create('div', className);
@@ -126,7 +115,6 @@ var CityControl = L.Control.extend({
 
 function map_init() {
     map = L.map('map');
-    $.get('/debug/map_init_created');
     if (Cookies.enabled) {
         default_city = Cookies.get('default_city');
     }
@@ -139,7 +127,6 @@ function map_init() {
         } else {
             reset_to_world();
         }
-        $.get('/debug/tilelayer_init');
         L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
                 attribution: '<div class="velimonde-sample velimonde-full"></div> ~full '
                 + '<div class="velimonde-sample velimonde-empty"></div> ~empty '
@@ -150,7 +137,6 @@ function map_init() {
                 opacity: 0.5
                 }).addTo(map);
         map.addControl(new CityControl(cities));
-        $.get('/debug/map_init_end');
     });
 }
 

@@ -41,61 +41,49 @@ a { text-decoration: none; }
 
 #splash p    { margin-top: 1em; }
 
+
+
 p.station-status            { margin: 0.5em 0; color: red; font-weight: bold; }
 .station-available-stands   { font-size: 1.3em; font-weight: bold;}
 .station-separator          { }
 .station-total-stands       { }
 
-.reload-control             { margin: 20px;
-                              border: 1px solid rgb(136,136,136); border-radius: 5px;
-                              height: 22px; width: 22px;
-                              font-size: 1.5em; line-height: 1.2em;
-                              text-align: center;
-                              background-color: white; }
+.leaflet-center { width: 100%;
+                  height: 100%; }
 
-.reload-control a           { text-decoration: none; }
+.leaflet-control-container  { height: 100%; }
 
 .leaflet-control-zoom       { margin: 10px!important; box-shadow: none!important;}
 
-.leaflet-control-cities     { margin: 0 20px; padding: 10px;
-                              border: 1px solid rgb(136,136,136); border-radius: 5px;
+.leaflet-control-cities     { margin: 0 -25%; padding: 10px;
+                              position: absolute;
+                              max-height: 75%;
+                              overflow: auto;
+                              left: 50%;
+                              width: 50%;
+                              overflow: auto;
+                              border: 1px solid rgb(196,196,196); border-radius: 5px;
                               background-color: white; }
 
 .leaflet-control-cities-base { }
 
 .leaflet-control-cities-expanded .leaflet-control-cities-toggle,
-.leaflet-control-cities .leaflet-control-cities-list {
-    display: none;
-}
+.leaflet-control-cities .leaflet-control-cities-list             { display: none; }
 
-.leaflet-control-cities-expanded .leaflet-control-cities-list {
-    display: block;
-}
+.leaflet-control-cities-expanded .leaflet-control-cities-list    { display: block; }
 
-.leaflet-control-cities-entry:hover {
-    font-weight: bold;
-}
+.leaflet-control-cities-entry           { padding: 0 0.5em; }
 
-.velimonde-sample {
-    display: inline-block;
-    width:0.8em;
-    height:0.8em;
-}
+.leaflet-control-cities-entry:hover     { background-color: #DDD; }
 
-.velimonde-empty {
-    background-color: #F55;
-}
-.velimonde-full {
-    background-color: #55F;
-}
-.velimonde-ok {
-    background-color: #0C0;
-}
-.velimonde-closed {
-    background-color: #000;
-}
+.velimonde-sample       { display: inline-block;
+                          width:0.8em;
+                          height:0.8em; }
 
-span.velimonde-country {
-    float: right;
-    margin-left:2em;
-}
+.velimonde-empty        { background-color: #F55; }
+.velimonde-full         { background-color: #55F; }
+.velimonde-ok           { background-color: #0C0; }
+.velimonde-closed       { background-color: #000; }
+
+span.velimonde-country  { float: right;
+                          margin-left:2em; }
