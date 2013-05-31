@@ -146,10 +146,7 @@ function map_init() {
                 + '<div class="velimonde-sample velimonde-ok"></div> OK '
                 + '<div class="velimonde-sample velimonde-closed"></div> closed '
                 + '| <a href="/api">API</a> '
-                + '| Background &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors & '
-                + '<a href="http://www.opencyclemap.org/">OpenCycleMap</a> '
-                + '| Realtime data &copy; <a href="https://developer.jcdecaux.com/#/opendata/licence">JCDecaux</a>'
-                + '| Source on <a href="https://github.com/gapato/velimonde">Github</a>',
+                + '| <a href="/licensing">Licensing</a>',
                 opacity: 0.5
                 }).addTo(map);
         map.addControl(new CityControl(cities));

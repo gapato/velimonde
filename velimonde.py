@@ -52,6 +52,10 @@ def index():
 def api_info():
     return render_template('api.html')
 
+@app.route('/licensing')
+def licensing():
+    return render_template('licenses.html')
+
 @app.route('/city/<city>')
 def city_map(city):
     try:
