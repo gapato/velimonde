@@ -14,10 +14,14 @@ a { text-decoration: none; }
              margin-top: -5em;
              z-index: 1000;
              background-color: black;
+             border-radius: 5px;
              color: white;
+             font-size: 1.5em;
              text-align: center;
              line-height: 2em;
              display: none; }
+
+
 
 #tip-broken { position: absolute;
               padding: 1em;
@@ -48,12 +52,21 @@ p.station-status            { margin: 0.5em 0; color: red; font-weight: bold; }
 .station-separator          { }
 .station-total-stands       { }
 
+.leaflet-control-attribution { box-shadow: none!important; }
+
+
 .leaflet-center { width: 100%;
                   height: 100%; }
 
 .leaflet-control-container  { height: 100%; }
 
-.leaflet-control-zoom       { margin: 10px!important; box-shadow: none!important;}
+.leaflet-control-zoom       { box-shadow: none;}
+
+.leaflet-bar                { border: none; }
+
+.leaflet-popup-tip          { box-shadow: none; }
+
+div.leaflet-popup-content-wrapper { box-shadow: none; border-radius: 5px; }
 
 .leaflet-control-cities     { margin: 0 -25%; padding: 10px;
                               position: absolute;
@@ -62,7 +75,7 @@ p.station-status            { margin: 0.5em 0; color: red; font-weight: bold; }
                               left: 50%;
                               width: 50%;
                               overflow: auto;
-                              border: 1px solid rgb(196,196,196); border-radius: 5px;
+                              border-radius: 5px;
                               background-color: white; }
 
 .leaflet-control-cities-base { }
