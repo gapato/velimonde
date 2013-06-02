@@ -16,7 +16,7 @@ var CityControl = L.Control.extend({
     options: {
         position: 'topcenter',
         title: 'city',
-        cities: {"Paris":{"position":{"lat":48.856866,"lng":2.352190},"zoom":12}}
+        cities: {"Paris":{"country":"FR"}}
     },
 
     initialize: function(cities) {
