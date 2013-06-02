@@ -6,6 +6,10 @@ var current_city;
 var cookie_domain = 'velimonde.oknaj.eu';
 var cookie_expire = 3600*24*30;
 
+var refetch_delay = 1000 * 60 * 5; // 5 minutes
+
+var refetch_timer_id;
+
 var cities;
 
 var CityControl = L.Control.extend({
@@ -164,8 +168,10 @@ function add_station(i, s) {
     popup_text += '<span class="station-total-stands">'+s.bike_stands+'</span> bikes here';
     popup_text += '</div>';
     popup_text += '<div class="station-update-time">';
-    mins_elasped = Math.round((epoch - s.last_update)/60000);
-    popup_text += 'updated '+mins_elasped+ ' minutes ago';
+    utcSeconds = s.last_update;
+    d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+    d.setUTCSeconds(utcSeconds/1000);
+    popup_text += 'updated at '+lpad(d.getHours(),2)+':'+lpad(d.getMinutes(),2);
     popup_text += '</div>';
     mark.bindPopup(popup_text);
     mark.addTo(marks_layer_group);
@@ -188,19 +194,25 @@ function switch_city(name) {
 
     if (cities[name]) {
 
-        fetch_stations(name);
+        window.clearInterval(refetch_timer_id);
+
+        fetch_stations(name, true);
 
         if (Cookies.enabled) {
             Cookies.set('default_city',  name);
         }
         $('#splash').hide();
+
+        refetch_timer_id = window.setInterval( function() {
+            fetch_stations(name, false);
+        }, refetch_delay);
     } else {
         Cookies.set('default_city', 'world');
         reset_to_world();
     }
 };
 
-function load_stations(data) {
+function load_stations(data, fit_map) {
     if (data) {
         epoch = (new Date).getTime();
         if (marks_layer_group) {
@@ -211,20 +223,27 @@ function load_stations(data) {
         }
         var stations = eval(data);
         $.each(stations, add_station);
-        map.fitBounds(marks_layer_group.getBounds());
+        if (fit_map) {
+            map.fitBounds(marks_layer_group.getBounds());
+        }
     }
 }
 
 
-function fetch_stations(name) {
+function fetch_stations(name, fit_map) {
     $('#loading').show();
     $.ajax({url: '/data/'+name+'.json'}).done(function(data) {
-        load_stations(data);
+        load_stations(data, fit_map);
     }).always( function(){
         $('#loading').hide();
     });
 }
 
+var lpad = function(value, padding) {
+    var zeroes = "0";
+    for (var i = 0; i < padding; i++) { zeroes += "0"; }
+    return (zeroes + value).slice(padding * -1);
+}
 
 $(document).ready(function () {
 
