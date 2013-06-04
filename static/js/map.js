@@ -108,6 +108,7 @@ var CityControl = L.Control.extend({
     },
 
     _expand: function () {
+        $('#splash').hide();
         L.DomUtil.addClass(this._container, 'leaflet-control-cities-expanded');
     },
 

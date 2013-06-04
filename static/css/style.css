@@ -80,7 +80,7 @@ div.leaflet-popup-content-wrapper { box-shadow: none; border-radius: 5px; }
 
 .leaflet-control-cities-base { }
 
-.leaflet-control-cities-expanded .leaflet-control-cities-toggle,
+.leaflet-control-cities-expanded .leaflet-control-cities-toggle  { display: block; cursor: default; color: #aaa; }
 .leaflet-control-cities .leaflet-control-cities-list             { display: none; }
 
 .leaflet-control-cities-expanded .leaflet-control-cities-list    { display: block; }
