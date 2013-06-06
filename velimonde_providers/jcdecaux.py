@@ -104,10 +104,14 @@ def update(options={}):
 def _reformat_json(data):
     stations = []
     for s in data:
+        try:
+            position = { 'lat' : round(s['position']['lat'], 6), 'lng' : round(s['position']['lng'], 6) }
+        except:
+            position = { 'lat' : 0, 'lng' : 0 }
         station = {
             'id'              : s['number'],
             'name'            : s['name'],
-            'position'        : { 'lat' : round(s['position']['lat'], 6), 'lng' : round(s['position']['lng'], 6) },
+            'position'        : position,
             'open'            : s['status'] == 'OPEN',
             'bike_stands'     : s['bike_stands'],
             'available_bikes' : s['available_bikes'],
