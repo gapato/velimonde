@@ -93,7 +93,7 @@ def update(options={}):
             try:
                 r = urllib2.urlopen(url)
                 in_json  = json.load(r)
-                out_json = _reformat_json(in_json)
+                out_json = _reformat_json(in_json, k)
                 with open(u'data/{0}.json'.format(k).encode('utf-8'), 'w') as f:
                     json.dump(out_json, f, separators=(',',':'));
             except:
@@ -101,12 +101,16 @@ def update(options={}):
     else:
         sys.stderr.write('JCDecaux API key not defined in options dict')
 
-def _reformat_json(data):
+def _reformat_json(data, city):
     stations = []
     for s in data:
         try:
             position = { 'lat' : round(s['position']['lat'], 6), 'lng' : round(s['position']['lng'], 6) }
         except:
+            if 'name' in s:
+                sys.stderr.write('Coordinates for station "{0}" ({1}) could not be parsed, it will not show on the map\n'.format(s['name'], city))
+            else:
+                raise KeyError
             position = { 'lat' : 0, 'lng' : 0 }
         station = {
             'id'              : s['number'],

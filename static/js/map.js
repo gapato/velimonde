@@ -146,6 +146,10 @@ function map_init() {
 }
 
 function add_station(i, s) {
+    if (s.position.lat == 0 && s.position.lng ==0)
+    {
+        return;
+    }
     if (s.open) {
         if (s.available_bikes <= 3) {
             color = '#F55';
